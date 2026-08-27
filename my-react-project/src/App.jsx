@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Game from './Game'
 
 const App = () => {
  let [apiData,SetApiData]=    useState([])
@@ -26,7 +27,7 @@ const App = () => {
 
   return (
     <div>
-      {
+      {/* {
         apiData.map((val)=>{
           return(<>
           <h1>{val.id}</h1>
@@ -34,7 +35,8 @@ const App = () => {
           </>)
 
         })
-      }
+      } */}
+      < Game/>
     </div>
   )
 }
