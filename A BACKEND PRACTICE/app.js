@@ -336,50 +336,50 @@ const express = require("express");
 let mongoose = require("mongoose");
 let bcrypt = require("bcryptjs");
 
-let User = require("./db/db");
-let app = express();
+// let User = require("./db/db");
+// let app = express();
 
-app.use(express.json());
+// app.use(express.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/db").then(() => {
-  console.log("db connected");
-});
+// mongoose.connect("mongodb://127.0.0.1:27017/db").then(() => {
+//   console.log("db connected");
+// });
 
 
-app.post("/signup", async (req, res) => {
+// app.post("/signup", async (req, res) => {
 
-    let { name, email, passWord } = req.body;
+//     let { name, email, passWord } = req.body;
 
-    let findData = await User.findOne({ email });
+//     let findData = await User.findOne({ email });
 
-    console.log(findData);
+//     console.log(findData);
 
-    if (findData) {
-        return res.send("User already exists");
-    }
-    else {
+//     if (findData) {
+//         return res.send("User already exists");
+//     }
+//     else {
 
-        let updatedP = await bcryptjs.hash(passWord, 10);
+//         let updatedP = await bcryptjs.hash(passWord, 10);
 
-        console.log(updatedP);
+//         console.log(updatedP);
 
-        let userinfo = new User({
-            name,
-            email,
-            passWord: updatedP
-        });
+//         let userinfo = new User({
+//             name,
+//             email,
+//             passWord: updatedP
+//         });
 
-        await userinfo.save();
+//         await userinfo.save();
 
-        res.send("User registered successfully");
-    }
-});
+//         res.send("User registered successfully");
+//     }
+// });
 
-// POST /signUp par user ka data req.body se liya jata hai aur User.findOne({ email }) se check kiya jata hai ki email pehle se registered hai ya nahi.
-//  Agar user exist karta hai to "User already exists" response milta hai. Agar nahi karta, password hash karke new User() se user banaya jata hai,
-//  save() se MongoDB mein store kiya jata hai aur success response bheja jata hai.
+// // POST /signUp par user ka data req.body se liya jata hai aur User.findOne({ email }) se check kiya jata hai ki email pehle se registered hai ya nahi.
+// //  Agar user exist karta hai to "User already exists" response milta hai. Agar nahi karta, password hash karke new User() se user banaya jata hai,
+// //  save() se MongoDB mein store kiya jata hai aur success response bheja jata hai.
 
-//----------------------------------
-app.listen(4000, () => {
-  console.log("Server running on port 4000");
-});
+// //----------------------------------
+// app.listen(4000, () => {
+//   console.log("Server running on port 4000");
+// });
